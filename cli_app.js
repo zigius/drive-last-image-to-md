@@ -16,21 +16,23 @@
 "use strict";
 
 import fs from "fs";
-import open from "open";
 import Configstore from "configstore";
 import yargs from "yargs";
+import path, { dirname } from 'path';
+import { fileURLToPath } from 'url';
+const __dirname = dirname(fileURLToPath(import.meta.url));
 
 import { google } from "googleapis";
 import { DriveClient } from "./services/driveClient.js";
 import { AuthenticationClient } from "./services/authenticationClient.js";
-import express from "express";
 
 const config = new Configstore("drive-cli");
 
 /**
  * To use OAuth2 authentication, we need access to a CLIENT_ID, CLIENT_SECRET, AND REDIRECT_URI.  To get these credentials for your application, visit https://console.cloud.google.com/apis/credentials.
  */
-let keysFile = fs.readFileSync("oauth2.keys.json");
+
+const keysFile = fs.readFileSync(path.resolve(__dirname, './oauth2.keys.json'));
 let keys = JSON.parse(keysFile).web;
 
 /**

@@ -14,7 +14,6 @@
     "express": "^4.18.2",
     "googleapis": "^109.0.1",
     "open": "^8.4.0",
-    "server-destroy": "^1.0.1",
     "yargs": "^17.6.2"
   }
 }
